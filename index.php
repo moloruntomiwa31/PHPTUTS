@@ -34,10 +34,6 @@ function sayMyName(){
     echo "<br>";
     echo "My name is $_new_name";
 }
-// echo "My name is $_new_name";
-// sayMyName();
-//echo "$age, $_new_name";
-
 
 // idexed arrays
 $peopleOne = ["shaun", "crystal", "ryu"];
@@ -51,8 +47,50 @@ echo "<br>";
 print_r($peopleOne);
 
 // associative arrays
-$ninjasOne = array("shaun" => "black", "mario" => "orange", "sayName"=> sayMyName());
+$ninjasOne = array("shaun" => "black", "mario" => "orange", "sayName" => sayMyName());
 $ninjasOne["sayName"];
+
+//multidimensional arrays
+$blogs = array(["title" => "mario", "author" => "lorem", "likes" => 30], ["title" => "pablo", "author" => "chris", "likes" => 40]);
+print_r($blogs[0]["title"]);
+echo count($blogs);
+
+$cars = array(
+    array("Volvo", 20, 16),
+    array("Masda", 15, 22),
+    array("Toyota", 12, 10),
+);
+echo "<br>";
+echo $cars[0][0] . " In stock, now selling at" . $cars[0][1] . ", with a discount of" . $cars[0][2] / 10;
+echo "<br>";
+
+// loops
+// while loops
+$i = 1;
+while ($i < 6) {
+    if ($i % 2 == 0) {
+        echo $i;
+    };
+    $i++;
+};
+// for loops
+for ($j = 0; $j < count($peopleOne); $j++) {
+    echo $peopleOne[$j] . " <br>";
+};
+// for each loop
+foreach ($peopleTwo as $people) {
+    echo $people;
+}
+
+//conditional statements
+$price = 20;
+if ($price < 10) {
+    echo "the condition is met";
+} elseif ($price == 20) {
+    echo "elseif condition is met";
+} else {
+    echo "the condition is not met";
+}
 ?>
 
 <!DOCTYPE html>
@@ -65,11 +103,15 @@ $ninjasOne["sayName"];
 </head>
 
 <body>
-    <h1>
-        <?php echo "<br>";
-        echo "My age is $age!";
-        ?>
-    </h1>
+    <h1>Products</h1>
+    <ul>
+        <?php
+        foreach ($ninjasOne as $x => $y) { ?>
+            <li>
+                <h3><?php echo $x . " " . $y; ?></h3>
+            </li>
+        <?php } ?>
+    </ul>
 </body>
 
 </html>
