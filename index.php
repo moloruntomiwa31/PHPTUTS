@@ -29,7 +29,8 @@ echo $radius++;
 echo $radius++;
 echo floor($pi);
 echo ceil($pi);
-function sayMyName(){
+function sayMyName()
+{
     $_new_name = "David";
     echo "<br>";
     echo "My name is $_new_name";
@@ -91,6 +92,45 @@ if ($price < 10) {
 } else {
     echo "the condition is not met";
 }
+echo " <br>";
+foreach ($blogs as &$blog) {
+    $blog["likes"] += 5;
+}
+print_r($blogs);
+
+//functions
+function addFive(&$value)
+{
+    $value += 5;
+}
+$num = 10;
+addFive($num);
+echo $num;
+
+$char = 20;
+function myFunc($char) {
+    global $char; 
+    echo $char += 10;
+}  
+myFunc($char);
+echo $char;
+
+//Switch case
+$favColor = "red";
+
+switch ($favColor) {
+    case "blue":
+        echo "found blue";
+        break;
+    case "yellow":
+        echo "found yellow";
+        break;
+    case "red":
+        echo "found red";
+        break;
+    default:
+        echo "no color found";
+}
 ?>
 
 <!DOCTYPE html>
@@ -111,6 +151,15 @@ if ($price < 10) {
                 <h3><?php echo $x . " " . $y; ?></h3>
             </li>
         <?php } ?>
+    </ul>
+
+    <h2>Blogs</h2>
+    <ul>
+        <li><?php foreach ($blogs as $blog) { ?>
+                <?php if ($blog["likes"] > 30) { ?>
+                    <?php echo $blog["title"] ?>
+                <?php } ?>
+            <?php } ?></li>
     </ul>
 </body>
 
